@@ -18,6 +18,6 @@ while i < N-1:
         if list_[j] > list_[j+1]:
             list_[j], list_[j+1] = list_[j+1], list_[j]
         j += 1
-    i+=1
+    i += 1
 
 print(list_)
