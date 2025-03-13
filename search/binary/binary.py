@@ -16,7 +16,7 @@ def binary_search_second(array: list[int], value: int) -> Optional[int]:
     # Здесь вместо <=, просто <
     while left < right:
         mid = (left + right) // 2
-        
+
         if array[mid] == value:
             return mid
         # При переопределении границ не добавляем/убавляем 1

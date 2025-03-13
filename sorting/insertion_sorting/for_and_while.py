@@ -13,12 +13,12 @@ for _ in range(N):
 print(array)
 for i in range(1, N):
     item_to_insert = array[i]
-    j = i - 1
+    prev = i - 1
 
-    while j >= 0 and array[j] > item_to_insert:
-        array[j+1] = array[j]
-        j -= 1
+    while prev >= 0 and array[prev] > item_to_insert:
+        array[prev+1] = array[prev]
+        prev -= 1
 
-    array[j+1] = item_to_insert
+    array[prev+1] = item_to_insert
 
 print(array)

@@ -14,7 +14,6 @@ for i in range(N-1):
     minimum = i
     for j in range(i+1, N):
         if array[j] < array[minimum]:
-            minimum = j
-        array[i], array[minimum] = array[minimum], array[i]
+            array[j], array[minimum] = array[minimum], array[j]
 
 print(array)
