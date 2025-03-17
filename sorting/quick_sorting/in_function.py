@@ -1,45 +1,33 @@
-# Сложность O(n log n) - если опорный элемент в середине. 
-# Если опорный элемент в начале или в конце - О(n^2).
+# Сложность O(n log n) - если опорный элемент в середине.
+# Если опорный элемент max or min - О(n^2).
 
 
-def partition(nums, low, high):  
-    # Выбираем средний элемент в качестве опорного
-    # Также возможен выбор первого, последнего
-    # или произвольного элементов в качестве опорного
-    pivot = nums[(low + high) // 2]
-    i = low - 1
-    j = high + 1
-    while True:
-        i += 1
-        while nums[i] < pivot:
-            i += 1
+def quicksort(arr):
+    if len(arr) <= 0:
+        return arr
+    middle_element_index = len(arr) // 2
+    pivot = arr[middle_element_index]
+    left, center, right = partition(arr, pivot)
 
-        j -= 1
-        while nums[j] > pivot:
-            j -= 1
-
-        if i >= j:
-            return j
-
-        # Если элемент с индексом i (слева от опорного) больше, чем
-        # элемент с индексом j (справа от опорного), меняем их местами
-        nums[i], nums[j] = nums[j], nums[i]
+    return quicksort(left) + center + quicksort(right)
 
 
-def quick_sort(nums):  
-    def _quick_sort(items, low, high):
-        if low < high:
-            split_index = partition(items, low, high)
-            _quick_sort(items, low, split_index)
-            _quick_sort(items, split_index + 1, high)
-
-    _quick_sort(nums, 0, len(nums) - 1)
+def partition(arr, pivot):
+    left, center, right = [], [], []
+    for item in arr:
+        if item < pivot:
+            left.append(item)
+        if item > pivot:
+            right.append(item)
+        if item == pivot:
+            center.append(item)
+    return left, center, right
 
 
 def main():
     random_list_of_nums = list(map(int, input().strip().split()))
-    quick_sort(random_list_of_nums)  
-    print(random_list_of_nums)
+    quicksort(random_list_of_nums)
+    print(quicksort(random_list_of_nums))
 
 
 if __name__ == "__main__":

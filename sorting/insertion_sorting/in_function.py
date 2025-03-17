@@ -14,7 +14,7 @@ def insertion(array: List[int]) -> List[int]:
             j -= 1
 
         array[j+1] = item_to_insert
-    
+
     return array
 
 
