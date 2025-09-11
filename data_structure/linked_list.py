@@ -11,6 +11,68 @@
 
 
 class Node:
-    def __init__(self, value=None, next=None):
-        self.value = value
-        self.next = next
+
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+
+
+class LinkedList:
+
+    def __init__(self):
+        self.head = None
+    
+    def prepend(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+    
+    def remove(self, key):
+        current = self.head
+
+        if current is not None and current.data == key:
+            self.head = current.next
+            return
+        
+        prev = None
+        while current and current.data != key:
+            prev = current
+            current = current.next
+        
+        if current is None:
+            return
+        
+        prev.next = current.next
+    
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.data, ' ')
+            current = current.next
+        print()
+    
+    def traverse_list(self):
+        current = self.head
+        while current:
+            print(current.data)
+            current = current.next
+    
+    def search_element(self, target):
+        current = self.head
+        while current:
+            if current.data == target:
+                return True
+            current = current.next
+        return False
+    
+    def reverse_list(self):
+        prev = None
+        current = self.head
+
+        while current:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+        
+        return prev
