@@ -12,4 +12,30 @@
 from collections import deque
 
 
-deque_ = deque()
+# Создание пустого дека
+d = deque()
+
+# Добавление элементов в конец
+d.append('a')
+d.append('b')
+print(d)  # Output: deque(['a', 'b'])
+
+# Добавление элементов в начало
+d.appendleft('c')
+print(d)  # Output: deque(['c', 'a', 'b'])
+
+# Удаление последнего элемента
+last_element = d.pop()
+print(last_element)  # Output: b
+print(d)  # Output: deque(['c', 'a'])
+
+# Удаление первого элемента
+first_element = d.popleft()
+print(first_element)  # Output: c
+print(d)  # Output: deque(['a'])
+
+d.extend([1, 2, 3])
+
+d.extendleft([4,5])
+
+d.rotate(1)
